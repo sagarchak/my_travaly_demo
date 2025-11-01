@@ -7,23 +7,6 @@ Widget signUpWidget() {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      SizedBox(height: 20),
-      /*  Padding(
-        padding: const EdgeInsets.all(10),
-        child: TextFormField(
-          controller: LoginAndSignUpController.to.nameController,
-          keyboardType: TextInputType.emailAddress,
-          textInputAction: TextInputAction.next,
-          validator: (value) {
-            return LoginAndSignUpController.to.validateName(value);
-          },
-          decoration: InputDecoration(
-            hintText: "Enter your name",
-            label: Text("Name"),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-          ),
-        ),
-      ),*/
       Padding(
         padding: const EdgeInsets.all(10.0),
         child: TextFormField(
