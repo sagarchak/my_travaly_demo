@@ -68,7 +68,7 @@ Widget signUpWidget() {
                 LoginAndSignUpController.to.signUpWithEmailAndPassword();
               }
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blue, minimumSize: Size(200, 50)),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, minimumSize: Size(200, 50)),
             child: Text(signup, style: ThemeFonts.bold(20).copyWith(color: Colors.black))),
       )
     ],
