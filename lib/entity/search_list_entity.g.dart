@@ -6,25 +6,20 @@ part of 'search_list_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-SearchListEntity _$SearchListEntityFromJson(Map<String, dynamic> json) =>
-    SearchListEntity(
+SearchListEntity _$SearchListEntityFromJson(Map<String, dynamic> json) => SearchListEntity(
       action: json['action'] as String?,
-      getSearchResultListOfHotels:
-          json['getSearchResultListOfHotels'] as Map<String, dynamic>?,
+      getSearchResultListOfHotels: json['getSearchResultListOfHotels'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$SearchListEntityToJson(SearchListEntity instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SearchListEntityToJson(SearchListEntity instance) => <String, dynamic>{
       'action': instance.action,
       'getSearchResultListOfHotels': instance.getSearchResultListOfHotels,
     };
 
-SearchCriteria _$SearchCriteriaFromJson(Map<String, dynamic> json) =>
-    SearchCriteria(
-      accomodation: json['accomodation'] as List<dynamic>?,
+SearchCriteria _$SearchCriteriaFromJson(Map<String, dynamic> json) => SearchCriteria(
+      accommodation: json['accommodation'] as List<dynamic>?,
       adults: (json['adults'] as num?)?.toInt(),
-      arrayOfExcludedsearchType:
-          json['arrayOfExcludedsearchType'] as List<dynamic>?,
+      arrayOfExcludedsearchType: json['arrayOfExcludedsearchType'] as List<dynamic>?,
       checkIn: json['checkIn'] as String?,
       checkOut: json['checkOut'] as String?,
       childern: (json['childern'] as num?)?.toInt(),
@@ -39,8 +34,7 @@ SearchCriteria _$SearchCriteriaFromJson(Map<String, dynamic> json) =>
       searchType: json['searchType'] as String?,
     );
 
-Map<String, dynamic> _$SearchCriteriaToJson(SearchCriteria instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SearchCriteriaToJson(SearchCriteria instance) => <String, dynamic>{
       'checkIn': instance.checkIn,
       'checkOut': instance.checkOut,
       'rooms': instance.rooms,
@@ -48,7 +42,7 @@ Map<String, dynamic> _$SearchCriteriaToJson(SearchCriteria instance) =>
       'childern': instance.childern,
       'searchType': instance.searchType,
       'searchQuery': instance.searchQuery,
-      'accomodation': instance.accomodation,
+      'accommodation': instance.accommodation,
       'arrayOfExcludedsearchType': instance.arrayOfExcludedsearchType,
       'highPrice': instance.highPrice,
       'lowPrice': instance.lowPrice,

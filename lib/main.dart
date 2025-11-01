@@ -22,13 +22,13 @@ class MyTravalyDemo extends StatelessWidget {
     return GetMaterialApp(
       title: 'My Travaly Demo',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.pink,
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.orangeAccent,
+          seedColor: Colors.pinkAccent,
         ),
         useMaterial3: true,
       ),
-      home: Home(),
+      home: Login(),
       initialBinding: AppBinding(),
     );
   }

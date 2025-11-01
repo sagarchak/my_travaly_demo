@@ -18,7 +18,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.black,
         body: Center(
           child: Container(
               padding: EdgeInsets.all(15),
@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
                       disabledColor: Colors.blueGrey,
                       textStyle: ThemeFonts.bold2(18, Colors.white),
                       disabledBorderColor: Colors.blueGrey,
-                      fillColor: Colors.orange,
+                      fillColor: Colors.pink,
                       borderRadius: BorderRadius.circular(20),
                       children: LoginAndSignUpController.to.signType,
                     ),

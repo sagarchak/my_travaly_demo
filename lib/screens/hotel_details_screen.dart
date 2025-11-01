@@ -5,7 +5,10 @@ import '../controller/home_controller.dart';
 import '../widgets/main_ hotel_list_wid.dart';
 
 class HotelDetailsScreen extends StatefulWidget {
-  const HotelDetailsScreen({super.key});
+  String? searchType;
+  List? searchQuery;
+  String? filterSearch;
+  HotelDetailsScreen({super.key, this.searchType, this.searchQuery, this.filterSearch});
 
   @override
   State<HotelDetailsScreen> createState() => _HotelDetailsScreenState();
@@ -16,6 +19,7 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
   final _homeController = HomeController.to;
   @override
   void initState() {
+    _homeController.searchDetails(widget.searchType!, widget.searchQuery!);
     _scrollController = ScrollController()..addListener(_scrollListener);
 
     super.initState();
@@ -42,12 +46,18 @@ class _HotelDetailsScreenState extends State<HotelDetailsScreen> {
             width: double.maxFinite,
             decoration:
                 BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(75), bottomRight: Radius.circular(75))),
+            child: Text(
+              widget.filterSearch?.toUpperCase() ?? '',
+              style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
           SizedBox(
             height: 25,
           ),
-          Obx(() => _homeController.hotelList.isNotEmpty
-              ? Expanded(child: Scrollbar(controller: _scrollController, child: MainHotelList(_scrollController!, _homeController)))
+          Obx(() => _homeController.searchListDetails.isNotEmpty
+              ? Expanded(
+                  child:
+                      Scrollbar(controller: _scrollController, child: MainHotelList(scrollController: null, list: _homeController.searchListDetails)))
               : CircularProgressIndicator(
                   color: Colors.pink,
                 )),

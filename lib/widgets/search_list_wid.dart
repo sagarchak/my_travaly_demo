@@ -21,6 +21,8 @@ searchListWid(HomeController _home, BuildContext context) {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: List.generate(data['numberOfResult'], (ind) {
+                              final Map<String, dynamic>? searchArray = listOfResult[ind]['searchArray'];
+
                               return Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Column(
@@ -70,7 +72,19 @@ searchListWid(HomeController _home, BuildContext context) {
                                         ),
                                         trailing: IconButton(
                                           onPressed: () {
-                                            // Get.to(HotelDetailsScreen());
+                                            if (searchArray != null &&
+                                                searchArray.isNotEmpty &&
+                                                searchArray['type'] != null &&
+                                                searchArray['query'] != null &&
+                                                searchArray['query'][0].isNotEmpty) {
+                                              Get.to(HotelDetailsScreen(
+                                                filterSearch: _home.filterSearch[index],
+                                                searchQuery: listOfResult[ind]['searchArray']['query'],
+                                                searchType: listOfResult[ind]['searchArray']['type'],
+                                              ))?.then((v) {
+                                                _home.searchListDetails.clear();
+                                              });
+                                            }
                                           },
                                           icon: Icon(
                                             color: Colors.pink,

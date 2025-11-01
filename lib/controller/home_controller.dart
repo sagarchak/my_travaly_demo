@@ -30,25 +30,43 @@ class HomeController extends GetxController {
   ];
 
   RxList hotelList = <dynamic>[].obs;
-  RxList searchValueDetails = <dynamic>[].obs;
+  RxList searchListDetails = <dynamic>[].obs;
   RxBool isLoading = false.obs;
   RxMap searchValueMap = <String, dynamic>{}.obs;
 
-  void searchDetails() {
+  void searchDetails(String searchType, List searchQuery) {
     CommonHttpsClient(baseUrl,
-        visitor_token: visitorToken,
-        body: SearchListEntity(
-                action: searchDetailsAction,
-                getSearchResultListOfHotels: SearchCriteria(
-                    accomodation: ['all'],
-                    adults: 2,
-                    checkIn: "2026-07-11",
-                    checkOut: "2026-07-12",
-                    rooms: 2,
-                    childern: 0,
-                    searchType: hotelIdSearch,
-                    searchQuery: []).toJson())
-            .toJson());
+            visitor_token: visitorToken,
+            body: SearchListEntity(action: searchDetailsAction, getSearchResultListOfHotels: {
+              'searchCriteria': SearchCriteria(
+                  accommodation: ['all'],
+                  limit: 5,
+                  currency: 'INR',
+                  highPrice: '3000000',
+                  lowPrice: '0',
+                  rid: 0,
+                  preloaderList: [],
+                  arrayOfExcludedsearchType: ['street'],
+                  adults: 2,
+                  checkIn: "2026-07-11",
+                  checkOut: "2026-07-12",
+                  rooms: 2,
+                  childern: 0,
+                  searchType: searchType,
+                  searchQuery: searchQuery)
+            }).toJson())
+        .getResponse()
+        .then((response) {
+      if (response != null && response.statusCode == 200) {
+        searchListDetails.value = jsonDecode(response.body)['data']['arrayOfHotelList'];
+        snackbarMessage(title: 'Search Deatils', message: searchListDetails.isEmpty ? "No Data Found!" : jsonDecode(response.body)['message']);
+      } else {
+        snackbarMessage(title: 'Search Deatils', message: jsonDecode(response!.body)['message']);
+      }
+    }).catchError((error) {
+      snackbarMessage(title: "Search Details", message: "Failed to fetch Search Details");
+    });
+    ;
   }
 
   void searchValue(String _input) {
@@ -110,7 +128,9 @@ class HomeController extends GetxController {
         List data = jsonDecode(response.body)['data'];
         //hotelList.clear();
         putHotelData(data);
-        snackbarMessage(title: "Hotel List", message: jsonDecode(response.body)['message']);
+        if (hotelList.length == 10) {
+          snackbarMessage(title: "Hotel List", message: jsonDecode(response.body)['message']);
+        }
       } else {
         snackbarMessage(title: "Hotel List", message: jsonDecode(response!.body)['message']);
       }

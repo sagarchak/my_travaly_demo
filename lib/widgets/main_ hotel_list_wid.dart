@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
-import 'package:my_travaly_demo/controller/home_controller.dart';
 
-Widget MainHotelList(ScrollController _scrollController, HomeController _homeController) {
+Widget MainHotelList({ScrollController? scrollController, List? list}) {
   return ListView.builder(
-    controller: _scrollController,
+    controller: scrollController,
     physics: BouncingScrollPhysics(),
-    itemCount: _homeController.hotelList.length,
+    itemCount: list?.length,
     itemBuilder: (context, index) {
-      final hotel = _homeController.hotelList[index];
+      final hotel = list?[index];
       final Map<String, dynamic> markedprice = hotel['markedPrice'];
       final Map<String, dynamic> googleReviewData = hotel['googleReview']?["data"] ?? {};
 
@@ -32,7 +31,8 @@ Widget MainHotelList(ScrollController _scrollController, HomeController _homeCon
                     ),
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
-                      child: Image.network(hotel['propertyImage'], // url must be first positional arg
+                      child: Image.network(
+                          scrollController == null ? hotel['propertyImage']['fullUrl'] : hotel['propertyImage'], // url must be first positional arg
                           width: 180,
                           height: 150,
                           fit: BoxFit.cover,

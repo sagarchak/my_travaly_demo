@@ -90,7 +90,7 @@ class LoginAndSignUpController extends GetxController {
     try {
       auth.signInWithEmailAndPassword(email: email, password: password).then((UserCredential userCredential) {
         snackbarMessage(title: login, message: "$login Successful");
-        Get.to(Home());
+        Get.off(Home());
       }).catchError((error) {
         snackbarMessage(title: login, message: error.toString());
         // Handle login error
@@ -121,7 +121,7 @@ class LoginAndSignUpController extends GetxController {
       );
       await auth.signInWithCredential(credential).then((UserCredential userCredential) {
         snackbarMessage(title: login, message: "$login Successful");
-        Get.to(Home());
+        Get.off(Home());
       }).catchError((error) {
         snackbarMessage(title: login, message: error.toString());
         // Handle Google Sign-In error

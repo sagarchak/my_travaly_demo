@@ -15,7 +15,7 @@ class SearchListEntity {
 @JsonSerializable()
 class SearchCriteria {
   SearchCriteria({
-    this.accomodation,
+    this.accommodation,
     this.adults,
     this.arrayOfExcludedsearchType,
     this.checkIn,
@@ -40,7 +40,7 @@ class SearchCriteria {
   int? childern;
   String? searchType;
   List? searchQuery;
-  List? accomodation;
+  List? accommodation;
   List? arrayOfExcludedsearchType;
   String? highPrice;
   String? lowPrice;

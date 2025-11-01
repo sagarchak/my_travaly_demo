@@ -90,7 +90,9 @@ class _HomeState extends State<Home> {
             height: 25,
           ),
           Obx(() => _homeController.hotelList.isNotEmpty
-              ? Expanded(child: Scrollbar(controller: _scrollController, child: MainHotelList(_scrollController!, _homeController)))
+              ? Expanded(
+                  child: Scrollbar(
+                      controller: _scrollController, child: MainHotelList(scrollController: _scrollController, list: _homeController.hotelList)))
               : CircularProgressIndicator(
                   color: Colors.pink,
                 )),

@@ -20,7 +20,9 @@ Widget loginInWidget() {
           decoration: InputDecoration(
             hintText: "Enter your email",
             label: Text("Email"),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
         ),
       ),
@@ -50,14 +52,14 @@ Widget loginInWidget() {
                 LoginAndSignUpController.to.signInWithEmailAndPassword();
               }
             },
-            style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent, minimumSize: Size(200, 50)),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, minimumSize: Size(200, 50)),
             child: Text(login, style: ThemeFonts.bold(20).copyWith(color: Colors.black))),
       ),
       ElevatedButton(
           onPressed: () {
             LoginAndSignUpController().signInWithGoogle();
           },
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent, minimumSize: Size(200, 50)),
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, minimumSize: Size(200, 50)),
           child: Text(googleLogin, style: ThemeFonts.bold(20).copyWith(color: Colors.black))),
     ],
   );
